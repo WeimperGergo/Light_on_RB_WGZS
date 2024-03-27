@@ -2,6 +2,15 @@ export function lighton() {
     // Kód ide 
     const JATEKTER = $("#jatek");
 
+    function jatekterLetrehozas(meret) {
+        let txt = "<div>"
+        for(let i = 0; i<meret*meret; i++){
+            txt += `<div class="gombok"></div>`
+        }
+        txt += "</div>"
+        return txt
+    }
+
     function listaGen(meret) {
         for (let i = 0; i < meret; i++) {
             // JATEKTER.append( elem )
