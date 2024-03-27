@@ -1,4 +1,7 @@
-import { lighton } from "./fuggvenyek.js";
+import {jatekterLetrehozas, listaGen} from "./fuggvenyek.js";
 
+const GOMBOK = listaGen(3);
 const JATEKTER = $("#jatekter")
-lighton();
+JATEKTER.html(jatekter(GOMBOK))
+
+lighton()
