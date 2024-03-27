@@ -5,7 +5,10 @@ body {
     justify-content: center;
 }
 
-
+#jatekter div{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
 
 h1, p {
     text-align: center;

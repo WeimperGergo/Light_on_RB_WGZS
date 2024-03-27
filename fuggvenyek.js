@@ -1,6 +1,6 @@
 export function lighton() {
     // Kód ide 
-    const JATEKTER = $("#jatek");
+    const JATEKTER = $("#jatekter");
 
     function jatekterLetrehozas(meret) {
         let txt = "<div>"
@@ -9,6 +9,12 @@ export function lighton() {
         }
         txt += "</div>"
         return txt
+        // RB
+    }
+
+    function jatekterMegjelenites(){
+        
+        
         // RB
     }
 
