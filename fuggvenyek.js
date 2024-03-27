@@ -9,6 +9,7 @@ export function lighton() {
         }
         txt += "</div>"
         return txt
+        // RB
     }
 
     function listaGen(meret) {
