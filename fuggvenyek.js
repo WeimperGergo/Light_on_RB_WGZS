@@ -3,12 +3,12 @@ export function lighton() {
     const JATEKTER = $("#jatekter");
 
     function jatekterLetrehozas(meret) {
-        let txt = "<div>"
+        let txt = "<div>";
         for(let i = 0; i<meret*meret; i++){
-            txt += `<div class="gombok"></div>`
+            txt += `<div class="gombok"></div>`;
         }
-        txt += "</div>"
-        return txt
+        txt += "</div>";
+        return txt;
         // RB
     }
 
@@ -19,9 +19,12 @@ export function lighton() {
     }
 
     function listaGen(meret) {
-        for (let i = 0; i < meret; i++) {
-            // JATEKTER.append( elem )
-            // WG
+        // WG
+        for (let i = 0; i < meret*meret; i++) {
+            let rnd = rndGen(0, 100);
+            if (rnd >= 20) JATEKTER[i].html(true);
+            else JATEKTER[i].html(false);
+            console.log(JATEKTER[i])
         }
     }
 
@@ -29,7 +32,11 @@ export function lighton() {
         // WG
         for (let i = 0; i < JATEKTER.length; i++) {
             if(JATEKTER[i] === true) JATEKTER[i] = false;
-            else JATEKTER[i] = true
+            else JATEKTER[i] = true;
         }
     }
+
+    function rndGen(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) ) + min;
+      }
 }
