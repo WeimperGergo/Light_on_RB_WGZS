@@ -5,6 +5,8 @@ export function lighton() {
     JATEKTER.html(jatekterLetrehozas(MERET));
     const jatekELEMEK = $("#jatekter gombok");
     listaGen(MERET);
+    jatekterMegjelenites(JATEKTER, jatekELEMEK);
+    jatekterElrendezes(MERET, JATEKTER);
 
     function jatekterLetrehozas(MERET) {
         let txt = `<div class="gombok"></div>`;
@@ -15,8 +17,19 @@ export function lighton() {
         // RB
     }
 
+    function jatekterElrendezes(MERET, JATEKTER) {
+        let szoveg;
+        for (let i = 0; i < MERET; i++) {
+            szoveg += "1fr ";
+        }
+        JATEKTER.css("grid-template-columns", szoveg);
+    }
+
     function jatekterMegjelenites(JATEKTER, jatekELEM){
-        // RB
+        for (let i = 0; i < JATEKTER.length; i++) {
+            if (JATEKTER.eq(i) === true) jatekELEM.eq(i).css("background-color", "green");
+            else jatekELEM.eq(i).css("background-color", "yellow");
+        }
     }
 
     // Ne pushold
