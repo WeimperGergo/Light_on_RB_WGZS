@@ -1,13 +1,22 @@
 body {
     width: 25%;
-    max-width: 250px;
+    max-width: 500px;
     margin: auto;
     justify-content: center;
 }
 
-#jatekter div{
+#jatekter{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    border: 1px solid black;
+    height: 250px;
+    
+}
+
+.gombok{
+    border-radius: 100%;
+    padding: 10%;
+    border: 1px solid black;
+    width: 20%;
 }
 
 h1, p {

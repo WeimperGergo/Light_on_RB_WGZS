@@ -1,38 +1,42 @@
 export function lighton() {
     // Kód ide 
+    const MERET = 3;
     const JATEKTER = $("#jatekter");
+    JATEKTER.html(jatekterLetrehozas(MERET));
+    const jatekELEMEK = $("#jatekter gombok");
+    listaGen(MERET);
 
-    function jatekterLetrehozas(meret) {
-        let txt = "<div>";
-        for(let i = 0; i<meret*meret; i++){
+    function jatekterLetrehozas(MERET) {
+        let txt = `<div class="gombok"></div>`;
+        for(let i = 0; i<MERET*MERET-1; i++){
             txt += `<div class="gombok"></div>`;
         }
-        txt += "</div>";
         return txt;
         // RB
     }
 
-    function jatekterMegjelenites(){
-        
-        
+    function jatekterMegjelenites(JATEKTER, jatekELEM){
         // RB
     }
 
-    function listaGen(meret) {
+    // Ne pushold
+    function listaGen(MERET) {
         // WG
-        for (let i = 0; i < meret*meret; i++) {
+        /* Megadott hosszig generál minden alkalommal egy I/H értéket 20% eséllyel */
+        for (let i = 0; i < MERET*MERET; i++) {
             let rnd = rndGen(0, 100);
-            if (rnd >= 20) JATEKTER[i].html(true);
-            else JATEKTER[i].html(false);
+            if (rnd >= 20) JATEKTER[i] = true;
+            else JATEKTER[i] = false;
             console.log(JATEKTER[i])
         }
     }
 
-    function gombKezelo(JATEKTER) {
+    function gombKezelo(LISTA) {
         // WG
-        for (let i = 0; i < JATEKTER.length; i++) {
-            if(JATEKTER[i] === true) JATEKTER[i] = false;
-            else JATEKTER[i] = true;
+        // Rá kell tenni az eseménykezelőt az adott gombra
+        for (let i = 0; i < LISTA.length; i++) {
+            if(LISTA[i] === true) LISTA[i] = false;
+            else LISTA[i] = true;
         }
     }
 
