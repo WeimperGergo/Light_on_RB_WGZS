@@ -19,7 +19,6 @@ export function lighton() {
         // RB
     }
 
-    // Ne pushold
     function listaGen(MERET) {
         // WG
         /* Megadott hosszig generál minden alkalommal egy I/H értéket 20% eséllyel */
