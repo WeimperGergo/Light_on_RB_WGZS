@@ -1,12 +1,14 @@
 export function lighton() {
     // Kód ide 
-    const MERET = 3;
+    const MERET = 3; // Hányszor hányas
     const JATEKTER = $("#jatekter");
+    const jatekterLISTA = []; 
+    // I/H értékkel teli lista
     JATEKTER.html(jatekterLetrehozas(MERET));
-    const jatekELEMEK = $("#jatekter gombok");
+    const jatekELEMEK = $("#jatekter .gombok"); // Gombok listája
     listaGen(MERET);
-    jatekterMegjelenites(JATEKTER, jatekELEMEK);
-    jatekterElrendezes(MERET, JATEKTER);
+    jatekterMegjelenites(jatekterLISTA, jatekELEMEK);
+    jatekterElrendezes(MERET, jatekterLISTA);
 
     function jatekterLetrehozas(MERET) {
         let txt = `<div class="gombok"></div>`;
@@ -18,16 +20,17 @@ export function lighton() {
     }
 
     function jatekterElrendezes(MERET, JATEKTER) {
-        let szoveg;
-        for (let i = 0; i < MERET; i++) {
+        let szoveg = "";
+        for (let i = 0; i < MERET-1; i++) {
             szoveg += "1fr ";
         }
+        szoveg += "1fr";
         JATEKTER.css("grid-template-columns", szoveg);
     }
 
-    function jatekterMegjelenites(JATEKTER, jatekELEM){
-        for (let i = 0; i < JATEKTER.length; i++) {
-            if (JATEKTER.eq(i) === true) jatekELEM.eq(i).css("background-color", "green");
+    function jatekterMegjelenites(lista, jatekELEM){
+        for (let i = 0; i < jatekELEM.length; i++) {
+            if (lista[i] == true) jatekELEM.eq(i).css("background-color", "green");
             else jatekELEM.eq(i).css("background-color", "yellow");
         }
     }
@@ -37,9 +40,9 @@ export function lighton() {
         /* Megadott hosszig generál minden alkalommal egy I/H értéket 20% eséllyel */
         for (let i = 0; i < MERET*MERET; i++) {
             let rnd = rndGen(0, 100);
-            if (rnd >= 20) JATEKTER[i] = true;
-            else JATEKTER[i] = false;
-            console.log(JATEKTER[i])
+            if (rnd <= 20) jatekterLISTA[i] = true;
+            else jatekterLISTA[i] = false;
+            // console.log(JATEKTER[i])
         }
     }
 
@@ -54,5 +57,5 @@ export function lighton() {
 
     function rndGen(min, max) {
         return Math.floor(Math.random() * (max - min + 1) ) + min;
-      }
+    }
 }

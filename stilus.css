@@ -1,3 +1,7 @@
+:root{
+    --meret: 3; /* CSS változó */
+}
+
 body {
     width: 50%;
     max-width: 1000px;
@@ -7,9 +11,9 @@ body {
 
 #jatekter{
     display: grid;
+    grid-template-columns: repeat(var(--meret), 1fr); /* Változó használata, meret * 1fr | repeat(3, 1fr) */
     border: 1px solid black;
     height: 250px;
-    
 }
 
 .gombok{
