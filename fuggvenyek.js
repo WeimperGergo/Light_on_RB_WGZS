@@ -6,7 +6,11 @@ export function lighton() {
     
     JATEKTER.html(jatekterLetrehozas(meret));   
     const jatekELEMEK = $("#jatekter .gombok"); // Gombok listája
-    listaGen(meret);
+    const UJJATEK = $("#ujJatekGomb")
+        UJJATEK.on("click", function(){
+        location.reload()
+    })
+    listaGen(MERET);
     jatekterMegjelenites(jatekterLISTA, jatekELEMEK);
     // jatekVege(jatekterLISTA);
     vegeFigyelo(jatekterLISTA);
@@ -78,5 +82,9 @@ export function lighton() {
 
     function rndGen(min, max) {
         return Math.floor(Math.random() * (max - min + 1) ) + min;
+    }
+
+    function ujJatekGomb(){
+        
     }
 }
