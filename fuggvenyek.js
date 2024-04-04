@@ -10,7 +10,8 @@ export function lighton() {
         UJJATEK.on("click", function(){
         location.reload()
     })
-    listaGen(MERET);
+
+    listaGen(meret);
     jatekterMegjelenites(jatekterLISTA, jatekELEMEK);
     // jatekVege(jatekterLISTA);
     vegeFigyelo(jatekterLISTA);
@@ -37,7 +38,7 @@ export function lighton() {
         /* Megadott hosszig generál minden alkalommal egy I/H értéket 20% eséllyel */
         for (let i = 0; i < meret*meret; i++) {
             let rnd = rndGen(0, 100);
-            if (rnd <= 100) jatekterLISTA[i] = true;
+            if (rnd <= 50) jatekterLISTA[i] = true;
             else jatekterLISTA[i] = false;
             // console.log(JATEKTER[i])
         }
