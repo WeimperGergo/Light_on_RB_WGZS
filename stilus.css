@@ -7,19 +7,21 @@ body {
     max-width: 1000px;
     margin: auto;
     justify-content: center;
+    background-color: gray;
 }
 
 #jatekter{
     display: grid;
     grid-template-columns: repeat(var(--meret), 1fr); /* Változó használata, meret * 1fr | repeat(3, 1fr) */
     border: 1px solid black;
-    height: 250px;
+    height: 50vh;
 }
 
 .gombok{
     border-radius: 100%;
-    padding: 5%;
+    padding: 10%;
     border: 1px solid black;
+    margin: 10%;
 }
 
 h1, p {
