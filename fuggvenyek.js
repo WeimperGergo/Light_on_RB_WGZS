@@ -6,6 +6,10 @@ export function lighton() {
     // I/H értékkel teli lista
     JATEKTER.html(jatekterLetrehozas(MERET));
     const jatekELEMEK = $("#jatekter .gombok"); // Gombok listája
+    const UJJATEK = $("#ujJatekGomb")
+        UJJATEK.on("click", function(){
+        location.reload()
+    })
     listaGen(MERET);
     jatekterMegjelenites(jatekterLISTA, jatekELEMEK);
     jatekterElrendezes(MERET, jatekterLISTA);
@@ -57,5 +61,9 @@ export function lighton() {
 
     function rndGen(min, max) {
         return Math.floor(Math.random() * (max - min + 1) ) + min;
+    }
+
+    function ujJatekGomb(){
+        
     }
 }
