@@ -1,35 +1,37 @@
 export function lighton() {
     // Kód ide 
     let meret = 3; // Hányszor hányas
+
     const JATEKTER = $("#jatekter");
     const jatekterLISTA = []; // I/H értékkel teli lista
     
-    JATEKTER.html(jatekterLetrehozas(meret));   
-    const jatekELEMEK = $("#jatekter .gombok"); // Gombok listája
-    const UJJATEK = $("#ujJatekGomb")
-        UJJATEK.on("click", function(){
-        location.reload()
-    })
+    JATEKTER.html(jatekterLetrehozas(meret));  
 
+    const jatekELEMEK = $("#jatekter .gombok"); // Gombok listája
+    const UJJATEK = $("#ujJatekGomb");
+
+    ujJatekGomb();
+    
     listaGen(meret);
+
     jatekterMegjelenites(jatekterLISTA, jatekELEMEK);
-    // jatekVege(jatekterLISTA);
+
     vegeFigyelo(jatekterLISTA);
 
+
     function jatekterLetrehozas(meret) {
-        let txt = `<div class="gombok"></div>`;
-        for(let i = 0; i<meret*meret-1; i++){
+        let txt = "";
+        for(let i = 0; i<meret*meret; i++){
             txt += `<div class="gombok"></div>`;
         }
         return txt;
         // RB
     }
 
-
     function jatekterMegjelenites(lista, jatekELEM){
         for (let i = 0; i < lista.length; i++) {
-            if (lista[i] == true) jatekELEM.eq(i).css("background-color", "green");
-            else jatekELEM.eq(i).css("background-color", "yellow");
+            if (lista[i] == true) jatekELEM.eq(i).css("background-color", "yellow");
+            else jatekELEM.eq(i).css("background-color", "green");
         }
     }
 
@@ -38,9 +40,8 @@ export function lighton() {
         /* Megadott hosszig generál minden alkalommal egy I/H értéket 20% eséllyel */
         for (let i = 0; i < meret*meret; i++) {
             let rnd = rndGen(0, 100);
-            if (rnd <= 50) jatekterLISTA[i] = true;
+            if (rnd <= 10) jatekterLISTA[i] = true;
             else jatekterLISTA[i] = false;
-            // console.log(JATEKTER[i])
         }
     }
 
@@ -60,14 +61,8 @@ export function lighton() {
         let talaltLampat = false;
         let i = 0;
         while (i < lista.length) {
-            if(lista[i] === true){
-                talaltLampat = true;
-                console.log(i + ". elem");
-            }
-            else if (i == lista.length){
-                vege = true;
-                console.log(i + ". elem");
-            }
+            if(lista[i] === true) talaltLampat = true;
+            else if (i+1 == lista.length && talaltLampat === false) vege = true;
             i++;
         }
         if (vege === true) {
@@ -81,11 +76,14 @@ export function lighton() {
         });
     }
 
+    function ujJatekGomb(){
+        UJJATEK.on("click", function(){
+            location.reload()
+        })
+    }
+    
     function rndGen(min, max) {
         return Math.floor(Math.random() * (max - min + 1) ) + min;
-    }
+    }    
 
-    function ujJatekGomb(){
-        
-    }
 }
