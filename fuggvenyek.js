@@ -16,13 +16,15 @@ export function lighton() {
 
     jatekterMegjelenites(jatekterLISTA, jatekELEMEK);
 
-    vegeFigyelo(jatekterLISTA);
+    gombKezelo(jatekterLISTA);
+
+    //vegeFigyelo(jatekterLISTA);
 
 
     function jatekterLetrehozas(meret) {
         let txt = "";
         for(let i = 0; i<meret*meret; i++){
-            txt += `<div class="gombok"></div>`;
+            txt += `<div class="gombok" id="${i}"></div>`;
         }
         return txt;
         // RB
@@ -40,7 +42,7 @@ export function lighton() {
         /* Megadott hosszig generál minden alkalommal egy I/H értéket 20% eséllyel */
         for (let i = 0; i < meret*meret; i++) {
             let rnd = rndGen(0, 100);
-            if (rnd <= 10) jatekterLISTA[i] = true;
+            if (rnd <= 20) jatekterLISTA[i] = true;
             else jatekterLISTA[i] = false;
         }
     }
@@ -49,32 +51,39 @@ export function lighton() {
         // WG
         // Rá kell tenni az eseménykezelőt az adott gombra
         let meret = $(":root");
-        for (let i = 0; i < LISTA.length; i++) {
-            if(LISTA[i] === true) LISTA[i] = false;
+        const gombELEM = $(".gombok");
+        gombELEM.on("click", function(){
+            const gombId = event.target.id;
+            /*if(LISTA[i] === true) LISTA[i] = false;
             else LISTA[i] = true;
-        }
-        
+            FOS
+            */
+            LISTA[gombId] = !LISTA[gombId];
+            //LISTA[gombId] = !LISTA[gombId];
+            console.log(gombId);
+            console.log(LISTA);
+            jatekVege(LISTA);
+        })
+        jatekterMegjelenites(LISTA, jatekELEMEK);
     }
 
     function jatekVege(lista){
-        let vege = false;
-        let talaltLampat = false;
         let i = 0;
-        while (i < lista.length) {
-            if(lista[i] === true) talaltLampat = true;
-            else if (i+1 == lista.length && talaltLampat === false) vege = true;
+        while (i < lista.length && lista[i] === false) {
+            //if(lista[i] === true) talaltLampat = true;
+            //else if (i+1 == lista.length && talaltLampat === false) vege = true;
             i++;
         }
-        if (vege === true) {
-            alert("Hurrá, meghosszabítottad a Föld életét!");
-        }
+        if (i >= lista.length) alert("Hurrá, meghosszabítottad a Föld életét!");;
     }
 
-    function vegeFigyelo(lista){
+    /*function vegeFigyelo(lista){
         $(window).on("load", function(){
-            jatekVege(lista)
-        });
+            jatekVege(lista);
+        });   
     }
+    SZAR
+    */
 
     function ujJatekGomb(){
         UJJATEK.on("click", function(){
